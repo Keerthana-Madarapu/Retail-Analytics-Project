@@ -1,0 +1,65 @@
+Query 1----Sales by Region
+
+SELECT c13 AS Region, 
+ROUND(SUM(CAST(c18 AS FLOAT)), 2) AS Total_Sales
+FROM Superstore
+WHERE c13 != 'Region'
+GROUP BY c13
+ORDER BY Total_Sales DESC;
+
+
+Query 2-----Sales and Profit by Category
+
+SELECT c15 AS Category,
+ROUND(SUM(CAST(c18 AS FLOAT)), 2) AS Total_Sales,
+ROUND(SUM(CAST(c21 AS FLOAT)), 2) AS Total_Profit
+FROM Superstore
+WHERE c15 != 'Category'
+GROUP BY c15
+ORDER BY Total_Sales DESC;
+
+
+Query 3: Top 10 Best Selling Products
+
+SELECT c17 AS Product_Name,
+ROUND(SUM(CAST(c18 AS FLOAT)), 2) AS Total_Sales
+FROM Superstore
+WHERE c17 != 'Product Name'
+GROUP BY c17
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+
+ Query 4a — Most Profitable States vs Loss Making States
+SELECT c11 AS State,
+ROUND(SUM(CAST(c21 AS FLOAT)), 2) AS Total_Profit
+FROM Superstore
+WHERE c11 != 'State'
+GROUP BY c11
+ORDER BY Total_Profit ASC
+LIMIT 5;
+
+
+Query 4b: Top 5 Most Profitable States
+
+SELECT c11 AS State,
+ROUND(SUM(CAST(c21 AS FLOAT)), 2) AS Total_Profit
+FROM Superstore
+WHERE c11 != 'State'
+GROUP BY c11
+ORDER BY Total_Profit DESC
+LIMIT 5;
+
+
+ Query 5: Customer Segment Analysis
+
+SELECT c8 AS Segment,
+ROUND(SUM(CAST(c18 AS FLOAT)), 2) AS Total_Sales,
+ROUND(SUM(CAST(c21 AS FLOAT)), 2) AS Total_Profit,
+COUNT(*) AS Total_Orders
+FROM Superstore
+WHERE c8 != 'Segment'
+GROUP BY c8
+ORDER BY Total_Profit DESC;
+
+
